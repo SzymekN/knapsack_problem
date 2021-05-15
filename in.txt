@@ -1,0 +1,8 @@
+15
+koszula 400 5
+spodnie 410 6
+bluza 50 1
+czapka 30 8
+recznik 70 1
+plaszcz 2000 10
+zapiekanka 150 2
