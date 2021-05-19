@@ -8,11 +8,12 @@ enum class EXCEPTION_CODE {
 	fileOpenError,
 	fileCreateError,
 	nullPointerError,
-	valueOutOfBoundaries
+	valueOutOfBoundaries,
+	invalidData
 };
 
 /*
-Shows why certain error occurred	
+Shows why certain error occurred
 @param err - type of error
 */
 void ShowException(EXCEPTION_CODE err);
@@ -24,7 +25,7 @@ Throw error if pointer set to null
 */
 template <class T>
 inline void CheckPointer(T* ptr) {
-	if (ptr==nullptr)
+	if (ptr == nullptr)
 		throw EXCEPTION_CODE::nullPointerError;
 }
 

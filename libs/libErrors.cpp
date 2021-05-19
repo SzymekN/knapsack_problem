@@ -19,8 +19,11 @@ void ShowException(EXCEPTION_CODE err)
 	case EXCEPTION_CODE::valueOutOfBoundaries:
 		std::cerr << "ERROR: Wrong value";
 		break;
+	case EXCEPTION_CODE::invalidData:
+		std::cerr << "ERROR: Invalid data";
+		break;
 	default:
-		std::cerr<< "ERROR: Unknown error";
+		std::cerr << "ERROR: Unknown error";
 		break;
 	}
 }

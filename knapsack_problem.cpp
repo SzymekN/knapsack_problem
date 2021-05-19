@@ -3,21 +3,30 @@
 
 int main()
 {
+    //array of object containig info about items
     Item* items;
+    //how many items in to check
     int itemCount{};
+    //size of a knapsack
     int knapsackSize{};
-    std::ifstream readFromFile;
-    OpenFile(readFromFile, "in.txt");
-    //-1 because first line contains knapsack size
-    itemCount = CountLines(readFromFile) - 1;
-    readFromFile >> knapsackSize;
-    items = LoadItems(readFromFile, itemCount);
+ 
+    try {
+        std::ifstream readFromFile;
+        OpenFile(readFromFile, "in.txt");
+        //count objects written each in another line, -1 because first line contains knapsack size
+        itemCount = CountLines(readFromFile) - 1;
+        readFromFile >> knapsackSize;
 
-    KnapsackDynamic(items, itemCount, knapsackSize);
+        if (itemCount < 1 or knapsackSize < 1)
+            throw EXCEPTION_CODE::valueOutOfBoundaries;
+        
+        items = LoadItems(readFromFile, itemCount);
 
-    for (int i = 0; i < itemCount; i++) {
-        std::cout << items[i].GetName() << " " << items[i].GetPrice()
-            << " " << items[i].GetWeight() << "\n";
+        KnapsackDynamic(items, itemCount, knapsackSize);
+        ShowAllItems(items, itemCount);
     }
-
+    catch (EXCEPTION_CODE err) {
+        ShowException(err);
+        exit(-1);
+    }
 }

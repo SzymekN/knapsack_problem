@@ -1,8 +1,8 @@
 15
-koszula 400 5
-spodnie 410 6
-bluza 50 1
-czapka 30 8
-recznik 70 1
-plaszcz 2000 10
-zapiekanka 150 2
+shirt 400 5
+trousers 410 6
+sweatshirt 50 1
+cap 30 8
+towel 70 1
+jacket 2000 10
+running shoes 150 2

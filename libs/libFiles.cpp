@@ -69,46 +69,6 @@ void CheckFileName(char fileName[30])
 	}
 }
 
-void CopyDataSet(int cursor, std::ifstream& readFromFile, std::ofstream& writeToFile)
-{
-	//coordinates of a vector 0=y, 1=x
-	int secondCoord = 0;
-	//one value that is being read from a file
-	double valueRead{};
-	//one line read from a file
-	std::string line{};
-	readFromFile.seekg(cursor, std::ios::beg);
-
-	writeToFile<< "\n\nY, X vector with a best match:\n";
-	while (secondCoord < 2)
-	{
-		std::getline(readFromFile, line);
-
-		std::istringstream iss(line);
-
-		while (iss.peek()!=EOF) {
-			iss>>valueRead;
-			writeToFile << std::setprecision(15)<<valueRead<<" ";
-		}
-		writeToFile<< std::endl << std::endl;
-		secondCoord++;
-	}
-}
-
-void WriteToFileAllDivisions(int* division, int* quantityOfANumber, int divisionLength, std::ofstream& writeToFile)
-{
-	for (int i = 1; i < divisionLength + 1; i++)
-	{
-		int temp = quantityOfANumber[i];
-		while (temp > 1) {
-			writeToFile<< division[i] << " ";
-			temp--;
-		}
-		writeToFile<< division[i] << " ";
-	}
-	writeToFile << std::endl;
-}
-
 int CountLines(std::ifstream& readFromFile)
 {
 	std::string line{};
@@ -121,26 +81,5 @@ int CountLines(std::ifstream& readFromFile)
 	return lines;
 }
 
-void SetValuesToArray(long long* values, int numberOfValues, std::ifstream& readFromFile)
-{
-
-	int i = 0;
-	//one line read from a file
-	std::string line{};
-	long long value;
-		
-	std::getline(readFromFile, line);
-	if(line=="")
-		std::getline(readFromFile, line);
-
-	std::istringstream iss(line);
-
-	while (iss.peek() != EOF) {
-		iss >> values[i];
-		//std::cout << values[i] << " ";
-		i++;
-	}
-
-}
 
 
